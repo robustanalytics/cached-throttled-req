@@ -39,9 +39,9 @@ var result = req.bulkcache(               // bulk retrieval of request results f
 
 # Example for Using Twitter API:
 ```js
-//
-//  setup CTRequest for Twitter API
-//
+/**
+ *  setup CTRequest for Twitter API
+ */
 var Twit = require('twit')
 
 var T = new Twit({
@@ -54,21 +54,20 @@ var T = new Twit({
 })
 
 var req = new CTRequest({
-  handler:              T.get.bind(null, 'search/tweets') // function to process the request, must have promise support
+  handler:              T.get.bind(T, 'search/tweets'),   // function to process the request, must have promise support
+  scope:                'twitter-search-api',             // unique id to avoid duplicate cache file names
   ctype:                'file',                           // cache service used, supported: 'file'
-  cparams:              './cache',                        // params used by the cache service
+  cparams:              './cache/',                       // params used by the cache service
   ttype:                'RateLimiter',                    // throttle service used, supported: 'RateLimiter'
   tparams:              [150, 'hour'],                    // params used by the throttle service
 })
 
-//
 //  issue a request
-//
-req.issue([{ q: 'nyc since:2013-08-01', count: 100 }])
+req.issue([{ q: 'nyc since:2013-08-01', count: 100 }], true)
 .catch(function (err) {
   console.log('caught error', err.stack)
 })
 .then(function (result) {
   console.log('data', result.data);
-})
+});
 ```
