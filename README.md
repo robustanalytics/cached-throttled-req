@@ -12,7 +12,8 @@ var req = new CTRequest({
 })
 
 req.issue(                                // issue a request using promise
-  [ param1, param2 ],                     // parameters to be passed on to the request
+  [ param1, param2 ]                      // parameters to be passed on to the request
+)
 .catch(function (err) {
   ...
 })
@@ -21,7 +22,7 @@ req.issue(                                // issue a request using promise
 })
 
 var result = req.cache(                   // retrieval of request results from cache
-  [ param1, param2 ]
+  [ param1, param2 ]                      // this array must match the array parameter of req.issue()
 )
 
 var result = req.bulkcache(               // bulk retrieval of request results from cache
