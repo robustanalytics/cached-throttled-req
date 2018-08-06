@@ -5,9 +5,8 @@ flexible package for processing requests (e.g., web and api requests) with cache
 ```js
 var req = new CTRequest({
   handler:              foo(),            // function to process the request
-  vparams:              [],               // an array of indices in params that vary for each request
   ctype:                'file',           // cache service used, supported: 'file'
-  cparams:              [],               // params used by the cache service
+  cparams:              ...,              // params used by the cache service
   ttype:                'RateLimiter',    // throttle service used, supported: 'RateLimiter'
   tparams:              [150, 'hour'],    // params used by the throttle service
 })
@@ -53,7 +52,7 @@ var T = new Twit({
 var req = new CTRequest({
   handler:              T.get.bind(null, 'search/tweets') // function to process the request, must have promise support
   ctype:                'file',                           // cache service used, supported: 'file'
-  cparams:              ['./cache'],                      // params used by the cache service
+  cparams:              './cache',                        // params used by the cache service
   ttype:                'RateLimiter',                    // throttle service used, supported: 'RateLimiter'
   tparams:              [150, 'hour'],                    // params used by the throttle service
 })
