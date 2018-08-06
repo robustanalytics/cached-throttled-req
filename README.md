@@ -4,17 +4,17 @@ flexible package for processing requests (e.g., web and api requests) with cache
 # Usage:
 ```js
 var req = new CTRequest({
-  id:                   '123-acd-!@#'     // a unique id for cache scoping
-  handler:              foo(),            // function to process the request
-  ctype:                'file',           // cache service used, supported: 'file'
-  cparams:              ...,              // params used by the cache service
-  ttype:                'RateLimiter',    // throttle service used, supported: 'RateLimiter'
-  tparams:              [150, 'hour'],    // params used by the throttle service
+  id:                   '123-acd-!@#'     // required: a unique id for cache scoping
+  handler:              foo(),            // required: promise to process the request
+  ctype:                'file',           // optional: cache service used, supported: 'file'
+  cparams:              ...,              // optional: params used by the cache service
+  ttype:                'RateLimiter',    // optional: throttle service used, supported: 'RateLimiter'
+  tparams:              [150, 'hour'],    // optional: params used by the throttle service
 })
 
 req.issue(                                // issue a request using promise
-  [ param1, param2 ],                     // parameters to be passed on to the request
-  check_cache,                            // whether to forgo issuing when there is a matching cache  
+  [ param1, param2 ],                     // required: parameters to be passed on to the request
+  check_cache,                            // optional: whether to forgo issuing when there is a matching cache  
 )
 .catch(function (err) {
   ...
@@ -24,7 +24,7 @@ req.issue(                                // issue a request using promise
 })
 
 var result = req.cache(                   // retrieval of request results from cache
-  [ param1, param2 ]                      // this array must match the array parameter of req.issue()
+  [ param1, param2 ]                      // required: this array must match the array parameter of req.issue()
 )
 
 var result = req.bulkcache(               // bulk retrieval of request results from cache
@@ -48,8 +48,8 @@ var T = new Twit({
   consumer_secret:      '...',
   access_token:         '...',
   access_token_secret:  '...',
-  timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
-  strictSSL:            true,     // optional - requires SSL certificates to be valid.
+  timeout_ms:           60*1000,
+  strictSSL:            true,
 })
 
 var req = new CTRequest({
