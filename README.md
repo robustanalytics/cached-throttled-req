@@ -32,8 +32,10 @@ var result = req.bulkcache(               // bulk retrieval of request results f
     ...
   ]
 )
+```
 
 # Example for Using Twitter API:
+```js
 //
 //  setup CTRequest for Twitter API
 //
@@ -66,3 +68,4 @@ req.issue([{ q: 'nyc since:2013-08-01', count: 100 }])
 .then(function (result) {
   console.log('data', result.data);
 })
+```
