@@ -4,8 +4,8 @@ flexible package for processing requests (e.g., web and api requests) with cache
 # Usage:
 ```js
 var req = new CTRequest({
-  id:                   '123-acd-!@#'     // required: a unique id for cache scoping
   handler:              foo(),            // required: promise to process the request
+  scope:                '123-acd-!@#'     // optional: a unique string for cache scoping 
   ctype:                'file',           // optional: cache service used, supported: 'file'
   cparams:              ...,              // optional: params used by the cache service
   ttype:                'RateLimiter',    // optional: throttle service used, supported: 'RateLimiter'
