@@ -12,7 +12,8 @@ var req = new CTRequest({
 })
 
 req.issue(                                // issue a request using promise
-  [ param1, param2 ]                      // parameters to be passed on to the request
+  [ param1, param2 ],                     // parameters to be passed on to the request
+  check_cache,                            // whether to forgo issuing when there is a matching cache  
 )
 .catch(function (err) {
   ...
