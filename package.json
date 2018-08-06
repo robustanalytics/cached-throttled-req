@@ -1,0 +1,42 @@
+{
+  "name": "@robustanalytics/cached-throttled-req",
+  "version": "0.1.0",
+  "description": "flexible package for processing requests (e.g., web and api requests) with cache and throttle support",
+  "main": "lib/ctreq.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "fs": "0.0.1-security",
+    "limiter": "^1.1.3",
+    "md5": "^2.2.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.2.0",
+    "twit": "^2.2.11"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robustanalytics/cached-throttled-req.git"
+  },
+  "keywords": [
+    "web",
+    "request",
+    "api",
+    "throttle",
+    "cache"
+  ],
+  "author": "Nan Zhang",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/robustanalytics/cached-throttled-req/issues"
+  },
+  "homepage": "https://github.com/robustanalytics/cached-throttled-req#readme"
+}
