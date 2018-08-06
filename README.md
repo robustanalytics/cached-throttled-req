@@ -8,6 +8,7 @@ var req = new CTRequest({
   scope:                '123-acd-!@#'     // optional: a unique string for cache scoping 
   ctype:                'file',           // optional: cache service used, supported: 'file'
   cparams:              ...,              // optional: params used by the cache service
+  cexpire:              3600,             // optional: number of seconds before cache expires (default to never expire)
   ttype:                'RateLimiter',    // optional: throttle service used, supported: 'RateLimiter'
   tparams:              [150, 'hour'],    // optional: params used by the throttle service
 })
