@@ -1,11 +1,14 @@
 # cached-throttled-req
-flexible package for processing requests (e.g., web and api requests) with cache and throttle support
+This is a nodeJs package for request scheduling with caching and throttling support.  One motivating application is web/api requests, for which a programmer often needs to:
+- throttle the frequency of requests to comply with requirements of the web/api service provider, and
+- cache the results returned for the requests, either indefinitely or for a certain time interval, in order to reduce the number of requests sent over the web.
+This package satisfies both requirements in an easy-to-use fashion.  It provides generic support to any request that can be packaged as a [promise](http://bluebirdjs.com/docs/why-promises.html), and allows optional configurations of cache (e.g., expiration time) and throttling (e.g., number of requests per second).  The initial version of this package stores cache as files and uses [limiter](https://github.com/jhurliman/node-rate-limiter) to support throttling.  We expect to add support for other caching (e.g., redis, memcached) and throttling (e.g., bottleneck) mechanisms in the future.
 
 # Usage:
 ```js
 var req = new CTRequest({
   handler:              foo(),            // required: promise to process the request
-  scope:                '123-acd-!@#'     // optional: a unique string for cache scoping 
+  scope:                '123-acd-!@#'     // optional: a unique string for cache scoping
   ctype:                'file',           // optional: cache service used, supported: 'file'
   cparams:              ...,              // optional: params used by the cache service
   cexpire:              3600,             // optional: number of seconds before cache expires (default to never expire)
